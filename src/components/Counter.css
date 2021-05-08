@@ -1,0 +1,27 @@
+.Counter {
+  font-family: "Major Mono Display", monospace;
+  font-size: 4em;
+  text-align: center;
+}
+
+.Counter .buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.Counter .buttons button {
+  width: 30%;
+  font-size: 1.9rem;
+  color: white;
+}
+
+.Counter button.plus {
+  background-color: green;
+}
+
+.Counter button.minus {
+  background-color: red;
+}
