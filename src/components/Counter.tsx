@@ -1,19 +1,30 @@
 import { useState } from "react";
 import "./Counter.css";
 
-const Counter = () => {
-  const [value, setValue] = useState(0);
+interface CounterProps {
+  initial?: number;
+  onChange: (value: number) => void;
+}
+
+const Counter = (props: CounterProps) => {
+  const [value, setValue] = useState(props.initial ?? 0);
+
+  const increment = () => {
+    setValue(value + 1);
+    props.onChange(value + 1);
+  };
+
+  const decrement = () => {
+    setValue(value - 1);
+    props.onChange(value - 1);
+  };
 
   return (
     <div className="Counter">
       <span className="value">{value}</span>
 
       <div className="buttons">
-        <button
-          data-testid="-"
-          className="minus"
-          onClick={() => setValue(value - 1)}
-        >
+        <button data-testid="-" className="minus" onClick={decrement}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -29,11 +40,7 @@ const Counter = () => {
             />
           </svg>
         </button>
-        <button
-          data-testid="+"
-          className="plus"
-          onClick={() => setValue(value + 1)}
-        >
+        <button data-testid="+" className="plus" onClick={increment}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
